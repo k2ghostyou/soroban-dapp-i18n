@@ -1,11 +1,13 @@
 import type { LocaleCode, I18nConfig, TranslationDictionary } from "./types";
 import { LOCALE_METADATA } from "./locales/registry";
 import en from "./locales/en.json";
+import es from "./locales/es.json";
+import pt from "./locales/pt.json";
 
 const dictionaries: Record<LocaleCode, TranslationDictionary> = {
   en,
-  es: require("./locales/es.json") as TranslationDictionary,
-  pt: require("./locales/pt.json") as TranslationDictionary,
+  es,
+  pt,
   fr: {},
   ar: {},
   yo: {},
@@ -39,7 +41,7 @@ export function createTranslator(config: I18nConfig) {
     if (value === undefined) {
       const fallbackDict = dictionaries[fallback] || dictionaries.en;
       value = getValueFromPath(fallbackDict, path);
-      if (process.env.NODE_ENV !== "production") {
+      if ((globalThis as any)?.process?.env?.NODE_ENV !== "production") {
         // eslint-disable-next-line no-console
         console.warn(`Missing translation key '${key}' for locale '${locale}', falling back to '${fallback}'`);
       }

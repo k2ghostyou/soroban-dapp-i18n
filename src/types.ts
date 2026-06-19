@@ -15,7 +15,9 @@ export interface LocaleMeta {
   intlTag: string;
 }
 
-export type TranslationDictionary = Record<string, string | TranslationDictionary>;
+export interface TranslationDictionary {
+  [key: string]: string | TranslationDictionary;
+}
 
 export interface FormatAmountOptions {
   locale?: string;
