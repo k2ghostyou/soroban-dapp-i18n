@@ -1,0 +1,57 @@
+{
+  "wallet": {
+    "title": "Cartera",
+    "connect": "Conectar",
+    "disconnect": "Desconectar",
+    "balance": "Saldo",
+    "loading": "Cargando..."
+  },
+  "transaction": {
+    "title": "Transacción",
+    "submit": "Enviar",
+    "success": "Transacción completada",
+    "failed": "Transacción fallida",
+    "pending": "Aprobación pendiente"
+  },
+  "balance": {
+    "available": "Disponible",
+    "locked": "Bloqueado",
+    "total": "Total"
+  },
+  "trustline": {
+    "title": "Línea de confianza",
+    "add": "Agregar línea de confianza",
+    "remove": "Eliminar línea de confianza",
+    "limit": "Límite de línea de confianza"
+  },
+  "vesting": {
+    "title": "Vesting",
+    "schedule": "Calendario de vesting",
+    "claimed": "Reclamado",
+    "claim": "Reclamar"
+  },
+  "airdrop": {
+    "title": "Airdrop",
+    "claimable": "Reclamable",
+    "unclaimed": "No reclamado",
+    "status": "Estado del airdrop"
+  },
+  "action": {
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "retry": "Reintentar",
+    "viewDetails": "Ver detalles"
+  },
+  "error": {
+    "network": "Error de red",
+    "invalidAmount": "Cantidad inválida",
+    "permission": "Permiso denegado",
+    "unknown": "Error desconocido"
+  },
+  "nav": {
+    "home": "Inicio",
+    "transactions": "Transacciones",
+    "settings": "Configuración",
+    "support": "Soporte"
+  }
+}
