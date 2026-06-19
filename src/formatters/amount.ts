@@ -39,17 +39,32 @@ export function parseAmount(amountString: string, decimals: number = DEFAULT_DEC
     throw new TypeError("Amount string must be a string");
   }
 
-  const normalized = amountString.replace(/[^0-9.,-]/g, "").trim();
-  const parts = normalized.split(/[,\.]/);
-
-  if (parts.length === 0 || normalized === "") {
+  const trimmed = amountString.trim();
+  if (trimmed === "") {
     throw new TypeError("Amount string must contain a numeric value");
   }
 
-  const last = parts.pop() ?? "";
-  const integerPart = parts.join("");
-  const fractionalPart = last.padEnd(decimals, "0").slice(0, decimals);
+  const sign = trimmed.startsWith("-") ? "-" : "";
+  const numeric = trimmed.replace(/^[+-]/, "").replace(/[^0-9.,]/g, "");
+  const lastDot = numeric.lastIndexOf(".");
+  const lastComma = numeric.lastIndexOf(",");
+  const separatorIndex = Math.max(lastDot, lastComma);
 
-  const combined = `${integerPart}${fractionalPart}`.replace(/^0+(?!$)/, "");
-  return BigInt(combined || "0");
+  let integerPart = numeric;
+  let fractionalPart = "";
+
+  if (separatorIndex !== -1) {
+    integerPart = numeric.slice(0, separatorIndex).replace(/[.,]/g, "");
+    fractionalPart = numeric.slice(separatorIndex + 1).replace(/[.,]/g, "");
+  } else {
+    integerPart = numeric.replace(/[.,]/g, "");
+  }
+
+  if (!/^[0-9]*$/.test(integerPart) || !/^[0-9]*$/.test(fractionalPart)) {
+    throw new TypeError("Amount string must contain a numeric value");
+  }
+
+  const normalizedFraction = (fractionalPart + "0".repeat(decimals)).slice(0, decimals);
+  const combined = `${integerPart || "0"}${normalizedFraction}`.replace(/^0+(?!$)/, "");
+  return BigInt(`${sign}${combined || "0"}`);
 }
