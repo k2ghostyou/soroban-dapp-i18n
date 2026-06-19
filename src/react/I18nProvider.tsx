@@ -8,6 +8,9 @@ interface I18nProviderProps extends I18nConfig {
 
 const I18nContext = createContext<ReturnType<typeof createTranslator> | null>(null);
 
+/**
+ * React provider for i18n state and translation utilities.
+ */
 export function I18nProvider({ children, locale, fallbackLocale, dictionary }: I18nProviderProps) {
   const translator = useMemo(
     () => createTranslator({ locale, fallbackLocale, dictionary }),
@@ -17,6 +20,9 @@ export function I18nProvider({ children, locale, fallbackLocale, dictionary }: I
   return <I18nContext.Provider value={translator}>{children}</I18nContext.Provider>;
 }
 
+/**
+ * Hook to access translation and locale helpers from context.
+ */
 export function useI18n() {
   const context = useContext(I18nContext);
   if (!context) {

@@ -12,11 +12,17 @@ const STYLE_OPTIONS: Record<Exclude<DateStyle, "relative">, Intl.DateTimeFormatO
   long: { year: "numeric", month: "long", day: "numeric", weekday: "long" }
 };
 
+/**
+ * Format relative time values using the current locale.
+ */
 function getRelativeTime(value: number, unit: Intl.RelativeTimeFormatUnit): string {
   const rtf = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" });
   return rtf.format(value, unit);
 }
 
+/**
+ * Format a date using short, medium, long, or relative styles.
+ */
 export function formatDate(date: Date | string | number, options: FormatDateOptions = {}): string {
   const targetDate = typeof date === "string" || typeof date === "number" ? new Date(date) : date;
   if (Number.isNaN(targetDate.getTime())) {

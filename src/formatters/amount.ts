@@ -1,5 +1,10 @@
 import type { FormatAmountOptions } from "../types";
 
+/**
+ * Format an amount for a given locale.
+ *
+ * Supports bigint stroop values and optional asset code suffixes.
+ */
 const DEFAULT_DECIMALS = 7;
 
 export function formatAmount(value: string | number | bigint, options: FormatAmountOptions = {}): string {
@@ -68,3 +73,8 @@ export function parseAmount(amountString: string, decimals: number = DEFAULT_DEC
   const combined = `${integerPart || "0"}${normalizedFraction}`.replace(/^0+(?!$)/, "");
   return BigInt(`${sign}${combined || "0"}`);
 }
+
+/**
+ * Parse a localized amount string to a bigint stroop value.
+ */
+export function parseAmount(amountString: string, decimals: number = DEFAULT_DECIMALS): bigint {
