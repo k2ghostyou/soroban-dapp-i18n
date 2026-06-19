@@ -1,0 +1,57 @@
+{
+  "wallet": {
+    "title": "Wallet",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "balance": "Balance",
+    "loading": "Loading..."
+  },
+  "transaction": {
+    "title": "Transaction",
+    "submit": "Submit",
+    "success": "Transaction completed",
+    "failed": "Transaction failed",
+    "pending": "Pending approval"
+  },
+  "balance": {
+    "available": "Available",
+    "locked": "Locked",
+    "total": "Total"
+  },
+  "trustline": {
+    "title": "Trustline",
+    "add": "Add trustline",
+    "remove": "Remove trustline",
+    "limit": "Trustline limit"
+  },
+  "vesting": {
+    "title": "Vesting",
+    "schedule": "Vesting schedule",
+    "claimed": "Claimed",
+    "claim": "Claim"
+  },
+  "airdrop": {
+    "title": "Airdrop",
+    "claimable": "Claimable",
+    "unclaimed": "Unclaimed",
+    "status": "Airdrop status"
+  },
+  "action": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "retry": "Retry",
+    "viewDetails": "View details"
+  },
+  "error": {
+    "network": "Network error",
+    "invalidAmount": "Invalid amount",
+    "permission": "Permission denied",
+    "unknown": "Unknown error"
+  },
+  "nav": {
+    "home": "Home",
+    "transactions": "Transactions",
+    "settings": "Settings",
+    "support": "Support"
+  }
+}
