@@ -3,6 +3,7 @@ import { I18nProvider, useI18n, LOCALE_METADATA } from "../../../src";
 import { getDirAttribute } from "../../../src/rtl/rtl";
 import { formatAmount } from "../../../src/formatters/amount";
 import { formatDate } from "../../../src/formatters/date";
+import "./App.css";
 
 const localeOptions = Object.values(LOCALE_METADATA);
 
@@ -40,14 +41,13 @@ export default function App() {
   );
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f7f8fb", padding: "24px" }} dir={getDirAttribute(locale as any)}>
-      <div style={{ marginBottom: 24, display: "flex", alignItems: "center", gap: 12 }}>
+    <div className="app-root" dir={getDirAttribute(locale as any)}>
+      <div className="toolbar">
         <label htmlFor="locale-select">Language:</label>
         <select
           id="locale-select"
           value={locale}
           onChange={(event) => setLocale(event.target.value)}
-          style={{ padding: 8, borderRadius: 6 }}
         >
           {localeOptions.map((meta) => (
             <option key={meta.code} value={meta.code}>
@@ -56,7 +56,7 @@ export default function App() {
           ))}
         </select>
       </div>
-      {content}
+      <div className="demo-panel">{content}</div>
     </div>
   );
 }
